@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="vagaPainel" opacity="0.95" prefHeight="80.0" prefWidth="120.0" style="-fx-background-color: gray; -fx-background-radius: 20; -fx-border-style: solid; -fx-border-radius: 20; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VagaIndividualController">
+   <effect>
+      <BoxBlur height="0.0" iterations="2" width="0.0" />
+   </effect>
+   <children>
+      <VBox alignment="CENTER" layoutY="1.0" prefHeight="80.0" prefWidth="120.0" spacing="10.0">
+         <children>
+            <Label fx:id="lbTituloVaga" contentDisplay="CENTER" style="-fx-border-color: black; -fx-background-radius: 9; -fx-border-radius: 9; -fx-border-style: solid; -fx-border-width: 0.5;" text="192.168.1.254" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <MenuButton fx:id="cbVaga" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#placaAction" text="Placa" />
+               </items>
+               <tooltip>
+                  <Tooltip graphicTextGap="5.0" text="Placa e Desligar" />
+               </tooltip>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </MenuButton>
+         </children>
+      </VBox>
+   </children>
+</Pane>
