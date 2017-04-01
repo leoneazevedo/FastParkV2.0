@@ -38,13 +38,13 @@ public class RootParkLayoutController implements Initializable {
                 while (true) {
 
                     Socket conexao = server.accept();
-                    System.out.println("Servidor Rodando");
+                    System.out.println("Servidor Rodando aqui...");
 
                     nomeDispositivo = conexao.getInetAddress().getHostAddress();
 
                     new Identificador(nomeDispositivo, conexao).start();
                 }
-                
+                                
             } catch (IOException ex) {
                 System.out.println(ex);                
             }
