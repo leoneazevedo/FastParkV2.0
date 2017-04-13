@@ -11,39 +11,49 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
+import main.Servidor;
 
 /**
  *
  * @author eng
  */
 public class Identificador extends Thread {
-    
+
     private final Socket conexao;
     private final String nomeDispositivo;//IP de cada dispositivo conectado
-        
 
     public Identificador(String nomeDispositivo, Socket conexao) {
+
         this.nomeDispositivo = nomeDispositivo;
         this.conexao = conexao;
+
     }
 
     @Override
-    public void run() {            
-     
+    public void run() {
+
         try {
             System.out.println(nomeDispositivo + " Conectado...");
-            PrintStream saida = new PrintStream(this.conexao.getOutputStream(), true);       
-            Scanner entrada = new Scanner(this.conexao.getInputStream());                                                                                         
-                                    
-            while (entrada.hasNextLine()) {
-                
-                   System.out.println(entrada.nextLine());
-                   
-             }                                                           
-            } catch (IOException ex) {
-                
-            Logger.getLogger(Identificador.class.getName()).log(Level.SEVERE, null, ex);
+            PrintStream saida = new PrintStream(this.conexao.getOutputStream(), true);
+            Scanner entrada = new Scanner(this.conexao.getInputStream());
             
+             Platform.runLater(() -> {
+                try {
+                    Servidor.getListaDeVagas().add(new VagaUnica(nomeDispositivo));
+                } catch (IOException ex) {
+                    Logger.getLogger(Identificador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             });
+            while (entrada.hasNextLine()) {
+
+                System.out.println(entrada.nextLine());
+
+            }
+        } catch (IOException ex) {
+
+            Logger.getLogger(Identificador.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
 }

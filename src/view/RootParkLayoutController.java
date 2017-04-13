@@ -27,8 +27,7 @@ public class RootParkLayoutController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("Iniciando Servidor");
+    public void initialize(URL url, ResourceBundle rb) {        
         Thread m = new Thread(() -> {
             String nomeDispositivo ;
             try {
@@ -36,13 +35,14 @@ public class RootParkLayoutController implements Initializable {
                 ServerSocket server = new ServerSocket(3000);
 
                 while (true) {
-
-                    Socket conexao = server.accept();
+                    
                     System.out.println("Servidor Rodando aqui...");
+                    Socket conexao = server.accept();                    
 
                     nomeDispositivo = conexao.getInetAddress().getHostAddress();
 
                     new Identificador(nomeDispositivo, conexao).start();
+                    
                 }
                                 
             } catch (IOException ex) {

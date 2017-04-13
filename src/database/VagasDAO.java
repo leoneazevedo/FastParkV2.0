@@ -11,4 +11,5 @@ package database;
  */
 public class VagasDAO {
     
+    
 }
